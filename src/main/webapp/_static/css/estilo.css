@@ -1,0 +1,3464 @@
+/*********************************************
+Sistema: Poupatempo 2a geracao
+Autor: Prodesp
+Versão:  2012.08.01
+*********************************************/
+
+/***********************
+Geral
+***********************/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 100.01%;
+}
+
+small {
+	font-weight: normal;
+	font-size: x-small;
+}
+
+body {
+	color: #000;
+	font-size: 62.5%;
+	width: 998px;
+	margin: 0 auto !important;
+	background-color: #FFF;
+}
+
+img {
+	border: none
+}
+
+#global {
+	margin: 0 auto;
+	width: 976px;
+	background-color: #FFF;
+}
+
+/* Esconde texto de Acessibilidade */
+.esconder {
+	display: block;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	left: -999em;
+}
+
+/***********************
+Padronização de Links
+***********************/
+a:link {
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+	text-decoration: underline;
+}
+
+a {
+	outline: none;
+}
+
+/* Link Botão Voltar */
+a:link.voltar,a:visited.voltar,a:active.voltar {
+	text-decoration: none;
+	color: #000;
+	float: none;
+	clear: both;
+	display: block;
+	width: 65px;
+	font-weight: bold;
+}
+
+/* Visualizar */
+a.visualizar {
+	text-decoration: underline;
+	background: url(../imagens/icon_lupa.gif) left center no-repeat;
+	padding-left: 18px;
+	margin-left: 2px;
+}
+
+a.visualizar:hover {
+	text-decoration: none;
+}
+
+/***********************
+FORMULARIOS
+***********************/
+.outer_panel {
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none;
+}
+
+/***********************
+PRIME-PANEL-GRID
+***********************/
+.noBorders tr,.noBorders td {
+	background: none !important;
+	border: none !important;
+	color: #000;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+
+/***********************
+PRIME-PANEL-GRID
+***********************/
+.noBorders2 tr,.noBorders2 td {
+	padding: 0 !important;
+	margin: 0 !important;
+	background: none !important;
+	border: none !important;
+	color: #000;
+}
+
+.destaqueLabel {
+	font-weight: bold;
+}
+
+/* Utilizado para Aumentar/Diminuir tamanho da fonte */
+.maior1 {
+	font-size: 1.30em;
+}
+
+.maior2 {
+	font-size: 1.35em;
+}
+
+.maior3 {
+	font-size: 1.45em;
+}
+
+.maior4 {
+	font-size: 1.55em;
+}
+
+.menor1 {
+	font-size: 0.90em;
+}
+
+.menor2 {
+	font-size: 0.85em;
+}
+
+.menor3 {
+	font-size: 0.80em;
+}
+
+.menor4 {
+	font-size: 0.75em;
+}
+
+/***********************
+Tipografia geral
+***********************/
+#content p, #content_full p{
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	line-height: 18px;
+}
+
+#content h1, #content_full h1{
+	color: #000;
+	font-size: 1.8em;
+	margin-bottom: 20px;
+}
+
+/* Botao centralizado */
+p.botao {
+	clear: left;
+	float: none;
+	text-align: center;
+	padding-top: 5px;
+}
+
+/* Botao à direita */
+p.botao_direita {
+	clear: left;
+	float: right;
+	text-align: center;
+}
+
+p.botao a {
+	margin-right: 10px;
+}
+
+/* Centraliza */
+.centro {
+	text-align: center;
+}
+
+/* texto com destaque */
+.bg {
+	background-color: #C33;
+	color: #FFF;
+	padding: 2px 5px;
+}
+
+/* campo do formulario com destaque */
+.input_destaque {
+	background-color: #C33;
+	color: #FFF;
+}
+
+/* Link Ver mais */
+p.vermais {
+	margin: 0; /* reset da classe herdada */
+	display: block;
+	float: right;
+}
+
+p.vermais a {
+	text-decoration: none;
+	color: #C33;
+	background: url(../imagens/icon_mais.gif) no-repeat left center !important;
+	padding-left: 12px;
+	display: block;
+	line-height: 16px;
+	font-size: 12px !important;
+	font-weight: bold;
+}
+
+p.vermais a:hover {
+	text-decoration: underline;
+}
+
+small {
+	font-size: .9em;
+	margin-left: 5px;
+}
+
+.iconDireita {
+	vertical-align: text-bottom;
+	margin-left: 5px;
+}
+
+.marginRight {
+	margin-right: 10px;
+}
+
+.marginLeft {
+	margin-left: 10px;
+}
+
+.btnDireita {
+	vertical-align: bottom;
+	margin-left: 5px;
+}
+
+/***********************
+Header
+***********************/
+#header {
+	margin-bottom: 15px;
+	float: left;
+	background: url(../imagens/bg_header.jpg) no-repeat;
+}
+
+/* Logo */
+#logo a {
+	display: block;
+	float: left;
+	width: 450px;
+	height: 56px;
+	background: url(../imagens/logo.gif) no-repeat left top;
+	text-indent: -9000px;
+	margin:9px 0 7px 20px;
+}
+
+/* Logo Detran */
+#logo a.detran {
+	background: url(../imagens/logo_detran.png) no-repeat left top;
+}
+
+/* Logo IIRGD */
+#logo a.iirgd {
+	background: url(../imagens/logo_policiaCivil.png) no-repeat left top;
+}
+
+#logo a.ministerio_publico {
+	background: url(../imagens/logo_ministerioPublico.png) no-repeat left
+		top;
+}
+
+/* Ícones */
+ul#toolbox {
+	font-size: 14px;
+	margin: 10px 20px 20px 0;
+	float: right;
+	text-align: right;
+
+}
+
+ul#toolbox span {
+	font-size: 11px;
+}
+
+ul#toolbox li {
+	display: inline;
+	padding-right: 14px;
+}
+
+ul#toolbox li.last {
+	padding-right: 0;
+}
+
+ul#toolbox li a {
+	color: #666;
+	text-decoration: none;
+	font-weight: normal;
+	padding-left: 18px;
+}
+
+ul#toolbox li.contrasteLink a {
+	background: url(../imagens/contraste.gif) left center no-repeat;
+}
+
+ul#toolbox li.fale a {
+	background: url(../imagens/fale.gif) left center no-repeat;
+}
+
+ul#toolbox li.mapa a {
+	background: url(../imagens/mapa.gif) left center no-repeat;
+}
+
+ul#toolbox li.print a {
+	background: url(../imagens/print.gif) left center no-repeat;
+}
+
+/* Identificação do Usuario */
+#user{
+	float:right;
+	margin:0 20px 0 0;
+	clear:right
+}
+#user li{
+	display:inline;
+	background:url(../imagens/divisor.gif) no-repeat right center;
+	padding-right:15px;
+	margin-right:10px;
+	font-size:1.2em;
+	font-weight:bold;
+}
+#user li a{
+	color:#333;
+}
+#user span.nome{
+	font-weight:normal;
+}
+#user li.sair{
+	background:none;
+	padding-right:0;
+	margin-right:0;
+}
+#user li.sair a{
+	background:url(../imagens/icon_sair.gif) left center no-repeat;
+	padding-left:20px;
+}
+#user li a:hover{
+	color:#C33;
+}
+
+/***********************
+Navegação Superior
+***********************/
+#nav_main {
+	height:30px;
+	width: 976px;
+	background-image:url(../imagens/bg_nav_main.gif);
+	float:left;
+}
+
+/* Usado na página inicial */
+#nav_main p{
+	display:block;
+	color:#333;
+	font-weight:bold;
+	font-size:1.4em;
+	line-height:30px;
+}
+
+#nav_main a{
+	display:block;
+	color:#333;
+	font-weight:bold !important;
+}
+
+#nav_main p.boas_vindas{
+	float:left;
+	margin-left:20px;
+}
+#nav_main p.data{
+	float:right;
+	margin-right:20px;
+}
+
+/***********************
+Area contendo Migalhas e Data
+***********************/
+#pre_content {
+	float: left;
+	width: 976px;
+	margin-bottom: 15px;
+}
+
+/***********************
+Migalhas
+***********************/
+ul#breadcrumbs {
+	margin: 0;
+	padding: 0;
+	font-size: 1.2em;
+	display: block;
+	width: 750px;
+	float: left;
+}
+
+ul#breadcrumbs li {
+	padding: 0;
+	display: inline;
+	background: none;
+}
+
+ul#breadcrumbs li a {
+	display: block;
+	padding-right: 12px;
+	margin-right: 5px;
+	background: url(../imagens/bullet-right_dupla.gif) no-repeat right center;
+	float: left;
+	color: #333;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+/***********************
+Data
+***********************/
+#pre_content span.data_atual {
+	display: block;
+	float: left;
+	width: 176px;
+	text-align: right;
+	font-size: 1.2em;
+}
+
+/***********************
+Barra identificadora do órgão
+***********************/
+span.barra_detran {
+	display: block;
+	float: none;
+	clear: both;
+	margin-bottom: 15px;
+	background-color: #369;
+	padding: 0 15px;
+	line-height: 26px;
+	color: #FFF;
+	font-size: 1.4em;
+	font-weight: normal;
+}
+
+span.barra_iirgd {
+	display: block;
+	float: none;
+	clear: both;
+	margin-bottom: 15px;
+	background-color: #363;
+	padding: 0 15px;
+	line-height: 26px;
+	color: #FFF;
+	font-size: 1.4em;
+	font-weight: normal;
+}
+
+/***********************
+Conteúdo com sidebar
+***********************/
+#content {
+	float: left;
+	margin: 0 20px 20px 0;
+	width: 657px;
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+
+#content h1.principal {
+	font-size: 1.8em;
+	margin-bottom: 15px;
+}
+
+#content ul.servicos {
+	margin-bottom: 20px;
+	list-style-type: none;
+	margin-left: 20px;
+}
+
+#content ul.servicos li {
+	border-bottom: 1px solid #CCC;
+}
+
+#content ul.servicos li a {
+	font-size: 1.4em;
+	color: #333;
+	line-height: 2em;
+	padding-left: 12px;
+	background: url(../imagens/bullet_preto.gif) left 10px no-repeat;
+	display: block;
+}
+
+#content ul.servicos li a:hover {
+	text-decoration: none;
+}
+
+#content ul.servicos li:hover {
+	background-color: #EEE;
+}
+
+/***********************
+Conteúdo sem sidebar
+***********************/
+#content_full {
+	float: left;
+	margin-bottom: 20px;
+	width: 976px;
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+
+.content_full_interno {
+	float: center;
+	margin: 20px;
+	width: 940px;
+	height: auto !important;
+}
+
+.content_sub_interno {
+	float: center;
+	margin: 20px;
+	width: 800px;
+	height: auto !important;
+}
+
+.cadastro_borda_interna_top {
+	float: center;
+	margin-left: 10px;
+	width: 910px;
+	height: auto !important;
+	border: 1px solid #999;
+	/* retira borda inferior para não exibir 1 pixel a mais */
+}
+
+.cadastro_borda_interna {
+	float: center;
+	margin-left: 10px;
+	width: 910px;
+	height: auto !important;
+	border: 1px solid #999;
+	border-top: none;
+	/* retira borda inferior para não exibir 1 pixel a mais */
+}
+
+.cadastro_borda_interna_rod {
+	float: center;
+	margin-left: 10px;
+	width: 910px;
+	height: auto !important;
+	border: 1px solid #999;
+	border-top: none;
+	/* retira borda inferior para não exibir 1 pixel a mais */
+}
+
+#content_full h4 {
+	font-size: 1.6em;
+	border-bottom: 1px solid #000;
+	margin-bottom: 15px;
+}
+
+#content_full h6.centralizado {
+	font-size: 1.0em;
+	margin-bottom: 10px;
+	text-align: center;
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+/***********************
+Comunicados
+***********************/
+#comunicados {
+	float: left;
+	margin-bottom: 20px;
+}
+
+#comunicados h1 {
+	display: block;
+	float: left;
+	height: 160px;
+	width: 200px;
+	color: #333;
+	background: url(../imagens/boneco_comunicados.gif) right 50px no-repeat;
+}
+
+#comunicados ul {
+	display: block;
+	float: left;
+	background-color: #EEE;
+	width: 424px;
+	padding: 17px 26px 0px 7px;
+	border-radius: 10px;
+}
+
+#comunicados ul li {
+	list-style-type: none;
+	font-size: 1.2em;
+	line-height: 18px;
+	margin-bottom: 20px;
+}
+
+#comunicados ul li a {
+	background: url(../imagens/bullet_vermelho.gif) no-repeat left center;
+	padding-left: 12px;
+	font-size: 1.2em;
+}
+
+#comunicados ul li.last {
+	margin-bottom: 10px;
+}
+
+#logo_detran{
+	background: url(../imagens/box_detran.jpg) no-repeat;
+	width: 130px;
+	height: 130px;
+}
+
+#logo_policia{
+	background: url(../imagens/box_policia.jpg) no-repeat;
+	width: 130px;
+	height: 130px;
+}
+
+#logo_mp {
+	background: url(../imagens/box_mp.jpg) no-repeat;
+	width: 130px;
+	height: 130px;
+}
+
+/***********************
+Dicas Úteis
+***********************/
+#dicas {
+	float: left;
+	border: 3px solid #999;
+	border-radius: 10px;
+	background: #EEE url(../imagens/bg_dicas.jpg) no-repeat;
+	width: 326px;
+	height: 141px;
+	padding: 20px 20px 20px 305px;
+}
+
+#dicas h1 {
+	background: url(../imagens/icon_dicas.gif) left 3px no-repeat;
+	padding-left: 20px;
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+
+/***********************
+Banner Central de Atendimento Prodesp
+***********************/
+#banner_helpdesk {
+	float: left;
+	padding: 20px;
+	background: url(../imagens/bg_banner_atendimento.gif) repeat-x;
+	border: 1px solid #036;
+	width: 257px;
+	height: 76px;
+}
+
+#banner_helpdesk p {
+	color: #FFF;
+	font-size: 1.4em;
+	margin-bottom: 10px;
+	line-height: 16px;
+}
+
+#banner_helpdesk p.central {
+	color: #FF0;
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+
+#banner_helpdesk p.fone {
+	color: #FF0;
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+/***********************
+Aviso - msg de aviso na pág após login
+***********************/
+#aviso {
+	border: 1px solid rgb(153, 153, 153);
+	border-radius: 10px 10px 10px 10px;
+	background: url("../imagens/bg_aviso.gif") repeat-x scroll left bottom transparent;
+	margin-bottom: 20px;
+	padding: 20px 20px 10px;
+}
+
+#aviso span.bg_icone {
+	display: block;
+	min-height: 55px;
+	height: auto !important;
+	height: 55px;
+	padding-left: 70px;
+	background: url(../imagens/icon_aviso.gif) left top no-repeat;
+	
+}
+
+#aviso p {
+	font-weight: bold;
+	color: #333;
+}
+
+#aviso p.icone {
+	display: block;
+	float: left;
+	margin-right: 20px;
+}
+
+.aviso_servicos {
+	font-weight: normal;
+	color: #333;
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	line-height: 18px;
+}
+
+/***********************
+Botões IIRGD/Detran
+***********************/
+/* Pergunta em destaque */
+#content p.pergunta {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/***********************
+Botões IIRGD/Detran
+***********************/
+/* Pergunta em destaque */
+#content p.pergunta {
+	font-size: 1.8em;
+	margin-bottom: 20px;
+}
+
+.btn_iirgd,.btn_detran {
+	width: 150px;
+	height: 48px;
+	display: block;
+	margin: 0 auto;
+	text-indent: -999em;
+}
+
+.btn_iirgd {
+	background: url(../imagens/btn_iirgd.gif);
+}
+
+.btn_detran {
+	background: url(../imagens/btn_detran.gif);
+}
+
+.btn_iirgd:hover {
+	background: url(../imagens/btn_iirgd_over.gif);
+}
+
+.btn_detran:hover {
+	background: url(../imagens/btn_detran_over.gif);
+}
+
+input.btn_iirgd,input.btn_detran {
+	width: 205px;
+	height: 40px;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 1.2em;
+	border-radius: 10px;
+}
+
+input.btn_iirgd {
+	background-color: #696;
+	border: 1px solid #363;
+}
+
+input.btn_detran {
+	background-color: #369;
+	border: 1px solid #036;
+}
+
+input.btn_iirgd:hover {
+	cursor: pointer;
+	background: #393 url(none);
+}
+
+input.btn_detran:hover {
+	cursor: pointer;
+	background: #007DC5 url(none);
+}
+
+/***********************
+Rodape
+***********************/
+#footer {
+	float: left;
+	background-color: #999;
+	width: 976px;
+	height: 26px;
+	text-align: center;
+}
+
+#footerVersion {
+	float: left;
+	font-size: 1.1em;
+	width: 976px;
+	height: 26px;
+	text-align: center;
+}
+
+#footer p {
+	color: #FFF;
+	text-decoration: none;
+	font-size: 1.2em;
+	font-weight: normal;
+	line-height: 26px;
+}
+
+/***********************
+Sidebar - Coluna Lateral Direita
+***********************/
+#sidebar {
+	float: left;
+	width: 299px;
+	margin-bottom: 20px;
+}
+
+/***********************
+Login
+***********************/
+#login {
+	float: left;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	width: 257px;
+	padding: 20px;
+	background-color: #EEE;
+	margin-bottom: 20px;
+}
+
+.formularioRenovacao {
+	float: left;
+	margin-bottom: 20px;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: right;
+	border: 0;
+}
+
+.labelDest {
+	font-weight: normal;
+	border: 0;
+	text-transform: uppercase;
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+.labelTitDestLeft {
+	font-weight: bold;
+	border: 0;
+	text-transform: uppercase;
+	font-size: 15px;
+	margin-left: 30px;
+	float: left;
+}
+
+.labelSemDest {
+	font-weight: normal;
+	border: 0;
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+#login h1 {
+	color: #C33;
+	background: url(../imagens/icon_login.gif) left center no-repeat;
+	padding-left: 35px;
+	line-height: 29px;
+	margin-bottom: 10px;
+	font-size: 1.8em;
+}
+
+#login form p {
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+
+#login form {
+	display: block;
+	float: right;
+	width: 50px;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: right;
+	line-height: 29px;
+}
+
+.label_format {
+	display: block;
+	float: left;
+	width: auto;
+	padding-right: 10px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 29px;
+}
+
+#login ul {
+	text-align: center;
+	margin-top: 15px;
+}
+
+#login li {
+	list-style-type: none;
+	display: inline;
+}
+
+#login li a {
+	font-size: 1.2em;
+	color: #333;
+	font-weight: normal;
+	padding-right: 15px;
+	margin-right: 10px;
+	background: url(../imagens/divisor.gif) right center no-repeat;
+}
+
+#login li a.last {
+	padding-right: 0;
+	margin-right: 0;
+	background: none;
+}
+
+#login li a:hover {
+	color: #C33;
+}
+
+/***********************
+Menu do Sidebar
+***********************/
+.menu {
+	border:1px solid #CCC;
+	border-radius:5px;
+	background-color:#F5F5F5;
+	float:left;
+	margin-bottom:20px;
+	width:267px;
+	padding:15px 15px 10px 15px;
+}
+
+.menu h1 {
+	color:#333;
+	font-size:1.6em;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+.menu ul li {
+	list-style-type:none;
+	margin-bottom:10px;
+	line-height:1.6em;
+	background:url(../imagens/bullet_preto.gif) left 3px no-repeat;
+	padding-left:12px;
+}
+
+.menu ul li.last {
+	margin-bottom: 0;
+}
+
+.menu ul li a {
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #333;
+}
+
+.nao_finalizado {
+	color: #C33;
+	font-weight: bold;
+}
+
+.menu p {
+	font-size: 1.2em;
+	line-height: 18px;
+}
+
+.menu p.vermais {
+	margin: 0 20px 0 0;
+}
+
+/***********************
+Formulario
+***********************/
+form.formulario {
+	margin-bottom: 10px;
+}
+
+#content_full form p { /* ajuste da altura dos paragrafos de formularios apenas */
+	line-height: 24px;
+}
+
+form.formulario fieldset {
+	border: 1px solid #CCC;
+	padding: 0 20px;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+	margin-bottom: 10px;
+}
+
+#fieldsetInterno {
+	border: 1px solid #CCC;
+	padding: 0 10px;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+	margin-bottom: 10px;
+}
+
+.fieldsetInterno {
+	border: 1px solid #CCC;
+	padding: 0;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+	margin-bottom: 10px;
+	height: 100%;
+	width: 800px;
+	padding-left: 0px;
+}
+
+.fieldsetSubInterno {
+	border: 1px solid #CCC;
+	padding: 0 20px;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+	margin-bottom: 10px;
+	height: 100%;
+	width: 800px;
+}
+/* conteudo do fieldset - espaçamento vertical */
+form.formulario fieldset div.conteudo {
+	padding: 15px 0 10px 0;
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+form.formulario legend {
+	color: #000;
+	font-size: 1.8em;
+	font-weight: bold;
+	padding: 0 5px;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+}
+
+.legendaFormulario {
+	color: #000;
+	font-size: 1.8em;
+	font-weight: bold;
+	padding: 0 5px;
+	/* usar somente padding laterais. Padding-top com diferencas entre browser */
+}
+/* usado no nome do cidadão */
+form.formulario h2 {
+	font-size: 1.6em;
+	margin-bottom: 20px;
+}
+/* usado no título da tela de pesquisa */
+form.formulario h2.tit_pesquisa {
+	font-size: 1.4em;
+	margin-left: 13px;
+}
+
+.tit_prontuario {
+	font-size: 1.4em;
+	margin-bottom: 0;
+	background: url(../imagens/icon_book.gif) no-repeat left 1px;
+	padding-left: 22px;
+}
+
+.tit_pesquisa {
+	font-size: 1.3em;
+	margin-left: 13px;
+}
+
+form.formulario label {
+	display: block;
+	float: left;
+	width: 240px;
+	text-align: right;
+	margin-right: 10px;
+	font-weight: bold;
+}
+/* largura menor */
+form.formulario label.menor {
+	width: 180px;
+}
+
+.borda {
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #999 !important;
+	text-transform: uppercase;
+}
+
+.bordaLowerCase {
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #999;
+}
+
+.bordaDisable {
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #999;
+	text-transform: uppercase;
+	background-color: #FFF;
+	color: #000000;
+	width: auto;
+}
+
+.bordaSelectPrime {
+	font-size: 12px;
+	padding: 0px;
+	text-transform: uppercase;
+}
+
+.borda_prime {
+	font-size: 12px;
+	padding: 0px;
+	border: 1px solid #999;
+	float: left;
+	font-size-adjust: inherit;
+	text-align: center;
+	width: 100px;
+}
+
+#borda {
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #999;
+}
+
+#borda_prime {
+	font-size: 10px;
+	padding: 1px;
+	border: 1px solid #999;
+	float: left;
+}
+
+a.link_busca {
+	text-decoration: underline;
+}
+
+a.link_busca:hover {
+	text-decoration: none;
+}
+
+/* Usado no quadro de Dados de Habilitação e Pre-Cadastro */
+/* paragrafos lado a lado */
+p.side_duplo_col1,p.side_duplo_col2,p.side_duplo2_col1,p.side_duplo2_col2,p.side_duplo3_col1,p.side_duplo3_col2,p.side_triplo_col1,p.side_triplo_col2,p.side_triplo_col3,p.side_triplo2_col1,p.side_triplo2_col2,p.side_triplo2_col3,p.side_duplo1_col1,p.side_duplo1_col2,p.side_triplo1_col1,p.side_triplo1_col2,p.side_triplo1_col3,p.side_quad1_col1,p.side_quad1_col2,p.side_quad1_col3,p.side_quad1_col4
+	{
+	display: block;
+	float: left;
+}
+
+/***********************
+Formulario Dados de Habilitação
+***********************/
+#habilitacao {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	float: left;
+	margin-bottom: 20px;
+	padding: 20px;
+	width: 892px;
+}
+
+.habilitacao_interno {
+	background-color: #EEE;
+	width: auto;
+	height: auto;
+	border: 0;
+	padding: 0px;
+}
+
+.table_interno_cinza {
+	background-color: #EEE;
+}
+
+.destaque_cinza {
+	color: #666666;
+	font-weight: bold;
+}
+
+#habilitacao span.grupo1,#habilitacao span.grupo2,#habilitacao span.grupo3 {
+	display: block;
+	float: left;
+	margin-bottom: 20px;
+}
+
+#habilitacao span.grupo3 {
+	margin-bottom: 0; /* para corrigir falha IE7 */
+}
+
+#content_full #habilitacao h2 {
+	font-size: 1.6em;
+	color: #000;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #000;
+}
+
+#content_full #habilitacao h3 {
+	font-size: 1.4em;
+	color: #666;
+	width: 180px;
+	text-align: right;
+	margin-bottom: 5px;
+	border: none;
+}
+/* altera paragrafo */
+#content_full #habilitacao p {
+	font-size: 1.2em;
+	margin-bottom: 2px;
+	line-height: 18px;
+}
+
+/* altera largura do label */
+#habilitacao label {
+	width: 180px;
+}
+
+/* largura das colunas duplas 1 */
+#habilitacao p.side_duplo_col1 {
+	width: 580px;
+}
+
+#habilitacao p.side_duplo_col2 {
+	width: 312px;
+}
+
+/* largura das colunas duplas 2 */
+#habilitacao p.side_duplo2_col1 {
+	width: 290px;
+}
+
+#habilitacao p.side_duplo2_col2 {
+	width: 602px;
+}
+
+/* largura das colunas triplas 1 */
+#habilitacao p.side_triplo_col1 {
+	width: 290px;
+}
+
+#habilitacao p.side_triplo_col2 {
+	width: 290px;
+}
+
+#habilitacao p.side_triplo_col3 {
+	width: 312px;
+}
+
+/***********************
+Formulario de Cadastro
+***********************/
+#cadastro {
+	margin-bottom: 10px;
+	float: left;
+}
+/* altera largura do label */
+#cadastro label {
+	width: 130px;
+}
+
+#cadastro label.auto {
+	width: auto;
+}
+
+#content_full #cadastro p {
+	height: 24px;
+	line-height: 24px;
+} /* importante para manter a altura de todas as linhas iguais */
+
+/* largura 100% */
+#content_full #cadastro p.full {
+	width: 934px;
+	display: block;
+	float: left;
+}
+
+/* largura das colunas duplas 1 */
+#cadastro p.side_duplo_col1 {
+	width: 320px;
+}
+
+#cadastro p.side_duplo_col2 {
+	width: 614px;
+}
+
+/* largura das colunas duplas 2 */
+#cadastro p.side_duplo2_col1 {
+	width: 467px;
+}
+
+#cadastro p.side_duplo2_col2 {
+	width: 467px;
+}
+
+/* largura das colunas triplas 1 */
+#cadastro p.side_triplo_col1 {
+	width: 410px;
+}
+
+#cadastro p.side_triplo_col2 {
+	width: 262px;
+}
+
+#cadastro p.side_triplo_col3 {
+	width: 262px;
+	float: left;
+	font-weight: bold;
+}
+
+/***********************
+Exibição de dados do Formulário
+***********************/
+#dados {
+	display: block;
+	float: left;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	background-color: #EEE;
+	margin-bottom: 10px;
+	border: 1px solid #CCC;
+}
+
+#dados h2 {
+	display: block;
+	float: left;
+	width: 914px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top: 1px dashed #CCC;
+	padding-top: 15px;
+	padding-left: 20px;
+	color: #000;
+	font-size: 1.4em;
+}
+
+#dados label {
+	width: 145px;
+}
+
+#content_full #dados p { /* ajuste da altura dos paragrafos de formularios apenas */
+	line-height: 18px;
+}
+
+/* largura 100% */
+#dados p.full {
+	width: 932px;
+	display: block;
+	float: left;
+}
+
+/* largura das colunas duplas 1 */
+#dados p.side_duplo1_col1 {
+	width: 300px;
+}
+
+#dados p.side_duplo1_col2 {
+	width: 632px;
+}
+
+/* largura das colunas triplas 1 */
+#dados p.side_triplo1_col1 {
+	width: 300px;
+}
+
+#dados p.side_triplo1_col2 {
+	width: 300px;
+}
+
+#dados p.side_triplo1_col3 {
+	width: 332px;
+}
+
+#dados p.side_triplo1_col3 label {
+	width: 100px;
+}
+
+/* largura das colunas quadruplas 1 */
+#dados p.side_quad1_col1 {
+	width: 300px;
+}
+
+#dados p.side_quad1_col2 {
+	width: 300px;
+}
+
+#dados p.side_quad1_col3 {
+	width: 167px;
+}
+
+#dados p.side_quad1_col4 {
+	width: 165px;
+}
+
+#dados p.side_quad1_col3 label {
+	width: 100px
+}
+
+#dados p.side_quad1_col4 label {
+	width: 70px
+}
+
+/***********************
+Usado nas caixas de categorias
+***********************/
+#content_full #cadastro div.categoria {
+	float: left;
+	padding: 0 0 10px 0;
+	margin-bottom: 0;
+	border: 1px solid #999;
+	border-bottom: none;
+	/* retira borda inferior para não exibir 1 pixel a mais */
+}
+
+#content_full #cadastro div.categoria_last {
+	float: left;
+	padding: 0 0 10px 0;
+	margin-bottom: 0;
+	border: 1px solid #999;
+	border-bottom: none;
+	/* retira borda inferior para não exibir 1 pixel a mais */
+}
+/* Insere borda somente na ultima caixa */
+#content_full #cadastro div.last {
+	border-bottom: 1px solid #999;
+}
+
+/* Usado nos titulos do pre-Cadastro na 1a Habilitacao */
+#content_full div.categoria h5.cadastro {
+	font-size: 1.4em;
+	margin-bottom: 20px;
+	color: #000;
+	background-color: #CCC;
+	padding: 5px 10px 5px 10px;
+	border-bottom: 1px solid #999;
+}
+
+/* Redimensiona largura das colunas devido borda das caixas */
+
+/* 100% */
+#cadastro div.categoria p.full {
+	width: 932px;
+}
+
+/* Duplo 1 */
+#cadastro div.categoria p.side_duplo_col2 {
+	width: 612px;
+}
+
+/* Duplo 2 */
+#cadastro div.categoria p.side_duplo2_col2 {
+	width: 465px;
+}
+
+/* Triplo 1 */
+#cadastro div.categoria p.side_triplo_col3 {
+	width: 260px;
+}
+
+/* Triplo 2 */
+#cadastro div.categoria p.side_triplo2_col1 {
+	width: 320px;
+}
+
+#cadastro div.categoria p.side_triplo2_col2 {
+	width: 372px;
+}
+
+#cadastro div.categoria p.side_triplo2_col3 {
+	width: 240px;
+}
+
+/* Texto dentro  */
+#cadastro div.categoria p.texto {
+	width: 892px;
+	margin-left: 20px;
+	margin-right: 20px;
+	display: block;
+	float: left;
+}
+
+/* largura de label especifico  */
+#cadastro label.label1 {
+	width: 200px;
+}
+
+/***********************
+Caixa de destaque (fieldset)
+***********************/
+
+/* Caixa de destaque  */
+#content_full fieldset.fieldInterno {
+	width: 892px;
+	float: none;
+	display: block;
+	clear: both;
+	border: 1px solid #999;
+	margin-bottom: 20px;
+}
+
+#content_full fieldset.fieldInterno legend {
+	color: #000;
+	font-size: 1.2em;
+}
+/* fielset dentro das caixas de categoria - ajuste das margens laterais */
+#content_full div.categoria fieldset.fieldInterno {
+	margin: 0 20px 10px 20px;
+	width: 850px;
+}
+
+#cadastro fieldset.fieldInterno p.side_duplo_col1 {
+	width: 300px;
+}
+
+#cadastro fieldset.fieldInterno p.side_duplo_col2 {
+	width: 592px;
+}
+
+/***********************
+Termos Pesquisados
+***********************/
+#termos_pesquisados {
+	background-color: #F0F0F0;
+	padding: 20px;
+	float: left;
+	width: 892px;
+	margin-bottom: 20px;
+	border: 1px solid #CCC;
+}
+#termos_pesquisados_dare {
+	background-color: #F0F0F0;
+	padding: 20px;
+	border: 1px solid #CCC;
+}
+
+#termos_pesquisados h1 {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+#content_full #termos_pesquisados p {
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+
+#termos_pesquisados label {
+	text-align: left
+}
+
+#termos_pesquisados p.full {
+	width: 892px;
+}
+
+#termos_pesquisados p.side_duplo1_col1 {
+	width: 500px;
+}
+
+#termos_pesquisados p.side_duplo1_col2 {
+	width: 390px;
+}
+
+#termos_pesquisados p.side_duplo1_col1 label,#termos_pesquisados p.full label {
+	width: 110px;
+}
+
+#termos_pesquisados p.side_duplo1_col2 label {
+	width: 150px;
+}
+
+/* Tela confirma dados do atendimento */
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.right-10 {
+    margin-right: 10px;
+}
+
+.btn-md {
+    padding: 8px 40px;
+}
+
+.titulo{color:#CC3333 !important; text-align: center;}
+
+#termos_pesquisados p.side_col1 {
+	width: 400px;
+	float: left;
+}
+
+#termos_pesquisados p.side_col2 {
+	width: 400px;
+	float: right;
+}
+#termos_pesquisados p.side_col1 label {
+	width: 100px;
+}
+
+#termos_pesquisados p.side_col2 label {
+	width: 100px;
+}
+
+
+/***********************
+Quantidade de resultados encontrados
+***********************/
+#quantidade {
+	width: 934px;
+	display: block;
+	float: left;
+}
+
+#quantidade h1 {
+	font-size: 1.4em;
+	margin-bottom: 5px;
+	width: 934px;
+	display: block;
+	float: left;
+}
+
+#quantidade p {
+	width: 804px;
+	display: block;
+	float: left;
+}
+
+#quantidade p.restricao {
+	display: block;
+	float: right;
+	width: 130px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+#prontuario p.registro {
+	display: block;
+	float: right;
+	width: 400px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+/***********************
+Ocorrencias
+***********************/
+div.ocorrencia {
+	border: 1px solid #999;
+	display: block;
+	float: left;
+	margin-bottom: 20px;
+	width: 892px;
+	padding: 15px 20px;
+}
+
+div.ocorrencia_sem_borda {
+	border: 1px solid #fff;
+	display: block;
+	float: left;
+	margin-bottom: 20px;
+	width: 930px;
+	padding: 0px;
+}
+
+div.ocorrencia p.side_triplo1_col1 {
+	display: block;
+	float: left;
+	width: 387px;
+}
+
+div.ocorrencia p.side_triplo1_col2 {
+	display: block;
+	float: left;
+	width: 385px;
+}
+
+div.ocorrencia p.side_triplo1_col3 {
+	display: block;
+	float: left;
+	width: 120px;
+	text-align: right;
+}
+
+div.ocorrencia p.side_triplo1_col1 span.nome {
+	font-weight: bold;
+	font-size: 1.4em;
+	margin-bottom: 0;
+}
+
+div.ocorrencia p.side_triplo1_col2 img {
+	margin-right: 5px;
+}
+
+#content_full div.ocorrencia p {
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+
+div.ocorrencia label {
+	text-align: left
+}
+
+div.ocorrencia p.side_duplo1_col1 {
+	width: 387px;
+}
+
+div.ocorrencia p.side_duplo1_col2 {
+	width: 505px;
+}
+
+div.ocorrencia p.side_duplo1_col1 label,div.ocorrencia p.full label {
+	width: 110px;
+}
+
+div.ocorrencia p.side_duplo1_col2 label {
+	width: 150px;
+}
+
+/***********************
+Mensagens de Alerta
+***********************/
+#alerta {
+	margin-bottom: 20px;
+	padding: 15px 20px 10px 20px;
+	border-radius: 10px;
+	height: 175px;
+}
+
+#alerta h5 {
+	font-size: 1.8em;
+	margin-bottom: 10px;
+}
+
+/* Msg de Sucesso */
+#alerta.sucesso {
+	border: 1px solid #363;
+	background-color: #E1F2E1;
+	height: auto;
+}
+
+#alerta.sucesso h5 {
+	background: url(../imagens/icon_sucesso.gif) no-repeat left center;
+	padding-left: 22px;
+	color: #363;
+	font-weight: normal;
+	font-size: 1.8em;
+}
+
+/* Msg de Alerta - icone de exclamaçao */
+#alerta.alerta {
+	border: 1px solid #C33;
+	background-color: #F8EEEE;
+	height: auto;
+}
+
+#alerta.cursos {
+	border: 1px solid #C33;
+}
+
+#alerta.alerta h5 {
+	background: url(../imagens/icon_alerta.gif) no-repeat left center;
+	padding-left: 30px;
+	color: #C33;
+	line-height: 24px;
+	font-weight: normal;
+	font-size: 1.8em;
+}
+
+/* Msg de Erro */
+#alerta.erro {
+	border: 1px solid #C33;
+	background-color: #F8EEEE;
+}
+
+#alerta.erro h5 {
+	background: url(../imagens/icon_erro2.gif) no-repeat left center;
+	padding-left: 22px;
+	color: #C33;
+	font-weight: normal;
+	font-size: 1.8em;
+}
+
+#alerta ul li {
+	margin-bottom: 10px;
+	list-style-type: none;
+	line-height: 22px;
+	font-size: 1.2em;
+}
+
+#alerta span.renach {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#alerta ol li {
+	margin-bottom: 10px;
+	line-height: 22px;
+	font-size: 1.2em;
+	margin-left: 20px;
+	border-bottom: 1px dashed #666;
+	padding-bottom: 10px;
+}
+
+#alerta ol li.last {
+	margin-bottom: 10px;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+span.icon_ok {
+	background: url(../imagens/icon_check.gif) left center no-repeat;
+	padding-left: 14px;
+	margin-left: 6px;
+	color: #090;
+	font-weight: bold;
+}
+
+span.icon_erro {
+	background: url(../imagens/icon_erro.gif) left center no-repeat;
+	padding-left: 14px;
+	margin-left: 6px;
+	color: #C33;
+	font-weight: bold;
+}
+
+h6.alerta {
+	font-size: 1.3em;
+	display: block;
+	padding: 10px;
+	border: 1px solid #C33;
+	background-color: #F8EEEE;
+	margin-bottom: 10px;
+}
+
+h6 span.atencao {
+	font-size: 1.4em;
+	color: #C33;
+}
+
+/***********************
+Tabela
+***********************/
+table.tabela {
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 1.2em;
+}
+
+table.tabela tr th {
+	background-color: #EEE;
+	color: #000;
+	font-weight: bold;
+}
+
+table.tabela tr th,table.tabela tr td {
+	border: 1px solid #999 !important;
+	padding: 5px;
+}
+
+table.tabela caption {
+	border: 0;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	color: #333;
+}
+
+td.titulo {
+	background-color: #EEE !important;
+	color: #000;
+	font-weight: bold !important;
+}
+
+.titulo table tbody td {
+	background-color: #EEE !important;
+	border: 0 !important;
+}
+
+/***********************
+Usado só no protótipo html
+***********************/
+ul#opcoes {
+	position: absolute;
+	background-color: #EEE;
+	border: 1px solid #333;
+	padding: 10px;
+}
+
+ul#opcoes li {
+	list-style-type: none;
+	line-height: 18px;
+}
+
+ul#opcoes li a {
+	color: #000;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.btn_voltar {
+	background: url(../imagens/icon_voltar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 13px;
+	height: 26px;
+	cursor: pointer;
+	border: none !important;
+	text-align: left;
+	vertical-align: text-bottom;
+	margin: 0px;
+	position: absolute;
+}
+
+.btn_prosseguir {
+	background: url(../imagens/btn_prosseguir.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 113px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	margin: 0px;
+}
+
+.btn_reeditar_cadastro {
+	background: url(../imagens/btn_reeditar_cadastro.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 151px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_data {
+	background: url(../imagens/data.png) no-repeat center !important;
+	text-decoration: none;
+	width: 25px;
+	height: 26px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: bottom;
+	margin-left: 10px;
+}
+
+.btn_hora {
+	background: url(../imagens/hora.png) no-repeat center !important;
+	text-decoration: none;
+	width: 25px;
+	height: 26px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: bottom;
+	margin-left: 10px;
+}
+
+.btn_imprimir_fic_digitais {
+	background: url(../imagens/btn_imprimir_fic_digitais.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 189px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	margin: 0px;
+}
+
+.btn_validar_fic_digiatis {
+	background: url(../imagens/btn_validar_fic_digiatis.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 214px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	margin: 0px;
+}
+
+.btn_prosseguir_renovacao {
+	background: url(../imagens/btn_prosseguir_renovacao.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 209px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	margin: 0px;
+}
+
+.btn_prosseguir_2avia {
+	background: url(../imagens/btn_prosseguir_2avia.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 180px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	margin: 0px;
+}
+
+.label_format_voltar {
+	margin-left: 20px;
+	height: 20px;
+	text-align: left;
+	vertical-align: text-bottom;
+	position: static;
+	text-decoration: none;
+}
+
+/* Link Botão Voltar */
+a:link.btn_voltar,a:visited.btn_voltar,a:active.btn_voltar {
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+}
+
+.label_descritivo {
+	height: 26px;
+	text-align: right;
+	vertical-align: text-bottom;
+	position: static;
+	text-decoration: none;
+	font-size: 10px;
+	margin-top: 20px;
+	margin-left: 10px;
+	white-space: nowrap;
+}
+
+.btn_Seleciona {
+	background: url(../imagens/btn_selecionare.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 120px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_Queima_dare {
+	background: url(../imagens/btn_queimar_DARE.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 144px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_restricoes {
+	background: url(../imagens/btn_pesquisar_restricoes.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 170px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_salvar {
+	background: url(../imagens/btn_salvar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 104px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_habilitar {
+	background: url(../imagens/btn_habilitar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 102px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_confirmarPreCadastro {
+	background: url(../imagens/btn_confirmar_precadastro.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 188px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_salvar_cadastro {
+	background: url(../imagens/btn_salvar_cadastro.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 148px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_avancar{
+	background: url(../imagens/btn_avancar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 95px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_gerar_senha {
+	background: url(../imagens/btn_gerar_senha.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 118px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btnLimpar {
+	background: url(../imagens/btn_limpar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 120px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_cadastrar_RG {
+	background: url(../imagens/btn_rg_novo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 176px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_cadastrar_RG_acervo {
+	background: url(../imagens/btn_rg_acervo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 176px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_refazer_pesquisa_complementar {
+	background: url(../imagens/btn_cidadao_nao_encontrado.png) no-repeat center !important;
+	text-decoration: none;
+	width: 388px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_confirmar_precadastro {
+	background: url(../imagens/btn_confirmar_precadastro.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 120px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.btn_entrar {
+	background: url(../imagens/btn_entrar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 93px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 5px;
+	margin-left: -220px;
+}
+
+.btn_entrar_login_interno {
+	background: url(../imagens/btn_entrar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 93px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 5px;
+}
+
+.btn_imprimir_fic {
+	background: url(../imagens/btn_imprimir_fic.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 122px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_anamnese {
+	background: url(../imagens/btn_imprimir_anamnese.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 165px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_agendamento_medico {
+	background: url(../imagens/btn_imprimir_agendamento_medico.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 229px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_agendamento_psicologico {
+	background: url(../imagens/btn_imprimir_agendamento_psicologico.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 268px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_agendamento_medico_psicologico {
+	background: url(../imagens/btn_imprimir_agendamento_medico_psicologico.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 309px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_protocolo {
+	background: url(../imagens/btn_imprimir_protocolo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 158px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_reenviar_senha {
+	background: url(../imagens/btn_reenviar_senha.png) no-repeat center !important;
+	text-decoration: none;
+	width: 147px;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_aac {
+	background: url(../imagens/btn_gerar_aac.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 118px;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_finalizar_processo {
+	background: url(../imagens/btn_finalizar_processo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 139px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_enviar_mp {
+	background: url(../imagens/btn_enviar_mp.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 220px;
+	height: 31px;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_gerar_FIC {
+	background: url(../imagens/btn_gerar_FIC.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 117px;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_status_criminal_amarela{
+	background: url(../imagens/icon_circulo_amarelo.gif) no-repeat center !important;
+	width: 24px;
+	height: 24px;
+	border: none !important;
+	cursor: pointer;
+	vertical-align: text-bottom;
+	margin-left: 5px;
+}
+.btn_status_criminal_vermelho{
+	background: url(../imagens/icon_circulo_vermelho.gif) no-repeat center !important;
+	width: 24px;
+	height: 24px;
+	border: none !important;
+	cursor: pointer;
+	vertical-align: text-bottom;
+	margin-left: 5px;
+}
+
+.btn_gerar_protocolo {
+	background: url(../imagens/btn_gerar_protocolo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 155px;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_fic_digital {
+	background: url(../imagens/btn_imprimir_fic.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 122px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir_renach {
+	background: url(../imagens/btn_imprimir_renach.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 153px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_gerar_senha_portal{
+	background: url('../imagens/btn_gerar_senha_portal.gif') no-repeat center !important;
+	width: 230px;
+	height: 29px;
+	vertical-align: middle;
+	cursor: pointer;
+	border: none !important;
+}
+
+.btn_outro_servico_iirgd {
+	background: url(../imagens/btn_outro_servico_iirgd.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 170px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_pesquisar {
+	background: url(../imagens/btn_pesquisar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 131px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_reimprimir {
+	background: url(../imagens/btn_reimprimir.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 118px !important;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_imprimir {
+	background: url(../imagens/btn_imprimir.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 101px !important;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+.btn_seguir {
+	background: url(../imagens/btn_seguir.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 250px !important;
+	height: 30px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_recuperar_atendimento {
+	background: url(../imagens/btn_recuperar_atendimento.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 193px !important;
+	height: 30px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_recuperar {
+	background: url(../imagens/btn_recuperar.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 123px !important;
+	height: 30px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+
+.btn_outro_servico_detran {
+	background: url(../imagens/btn_outro_servico_detran.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 185px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_coletaBiometrica {
+	background: url(../imagens/btn_captura_biometrica.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 159px;
+	height: 27px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_isento {
+	background: url(../imagens/btn_isento.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 137px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_dare_retaguarda {
+	background: url(../imagens/btn_dare_retaguarda.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 147px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.btn_novo_cadastro {
+	background: url(../imagens/btn_novo_cadastro.gif) no-repeat center
+		!important;
+	text-decoration: none;
+	width: 142px;
+	height: 29px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0px;
+}
+
+.btn_gerar_codigo-verificador {
+	background: url(../imagens/gerarCodigo.PNG) no-repeat center !important;
+	text-decoration: none;
+	width: 148px !important;
+	height: 30px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+	margin-top: 14px;
+}
+
+.icon_book {
+	background: url(../imagens/icon_book.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 16px;
+	height: 16px;
+	cursor: hand;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_cino {
+	background: url(../imagens/icon_cino.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_cinn {
+	background: url(../imagens/icon_cinn.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_cirg {
+	background: url(../imagens/icon_cirg.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_exrg_vermelho {
+	background: url(../imagens/icon_exrg_vermelho.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_pesc_vermelho {
+	background: url(../imagens/icon_pesc_vermelho.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_tlod_vermelho {
+	background: url(../imagens/icon_tlod_vermelho.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_exrg_amarelo {
+	background: url(../imagens/icon_exrg_amarelo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_pesc_amarelo {
+	background: url(../imagens/icon_pesc_amarelo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_tlod_amarelo {
+	background: url(../imagens/icon_tlod_amarelo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 41px;
+	height: 16px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_circulo_amarelo {
+	background: url(../imagens/icon_circulo_amarelo.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_circulo_verde {
+	background: url(../imagens/icon_circulo_verde.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_circulo_vermelho {
+	background: url(../imagens/icon_circulo_vermelho.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.icon_info {
+	background-image: url(../imagens/info.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+	border:none !important;
+	
+}
+
+/***********************
+Tabela
+***********************/
+table.tabela {
+	margin-bottom: 30px;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 1.2em;
+}
+
+table.tabela tr th,table.tabela tr td {
+	border: 1px solid #999;
+	padding: 5px;
+	background-color: #FFF;
+}
+
+table.tabela tr th {
+	background-color: #EEE;
+	color: #000;
+	font-weight: bold;
+}
+
+table.tabela caption {
+	border: 0;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	color: #333;
+}
+
+.waitLoad {
+	cursor: default;
+	background-repeat: no-repeat;
+	background-image: url("../imagens/waitLoad.gif");
+	width: 16px;
+	height: 16px;
+}
+
+.icon_status_ok {
+	background: url(../imagens/btn_icon_check.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 10px;
+	height: 10px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.icon_e_cpf {
+	background: url(../imagens/e-cpf.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 289px;
+	height: 184px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.icon_status_pen {
+	background: url(../imagens/icon_erro.gif) no-repeat center !important;
+	text-decoration: none;
+	width: 10px;
+	height: 10px;
+	cursor: default;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.labelVerde {
+	font-weight: bold;
+	color: #009900;
+}
+
+.labelVermelho {
+	font-weight: bold;
+	color: #CC3333;
+}
+
+#clock {
+	background: none;
+	font-family: Arial, Verdana, Helvetica, sans-serif !important;
+	margin: 0px;
+	font-size: 12px !important;
+	font-weight: normal !important;
+}
+
+#pre_content div.clockFormat {
+	display: block;
+	float: left;
+	width: 251px;
+	text-align: right;
+	font-size: 16px !important;
+	font-weight: bold !important;
+	white-space: nowrap;
+}
+
+#listaInfracao {
+	background: #FFF !important;
+}
+
+.icontet {
+	background: #FFF !important;
+	background-image: url("../imagens/icon_erro.gif") !important;
+}
+
+.data_calendar {
+	background: url(../imagens/data.png) no-repeat center !important;
+	text-decoration: none;
+	width: 24px;
+	height: 25px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+.hora_calendar {
+	background: url(../imagens/hora.png) no-repeat center !important;
+	text-decoration: none;
+	width: 24px;
+	height: 25px;
+	cursor: pointer;
+	border: none !important;
+	text-align: center;
+	vertical-align: middle;
+	margin: 2px;
+}
+
+/* lista */
+.nav {
+  margin-bottom: 20px;
+  margin-left: 0;
+  list-style: none;
+	font-size:1.4em;
+	background-color:#FFF;
+}
+
+.nav > li > a {
+  display: block;
+	color:#666;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #f5f5f5;
+	color:#333;
+}
+
+.nav-tabs,
+.nav-pills {
+  *zoom: 1;
+}
+
+.nav-tabs:before,
+.nav-pills:before,
+.nav-tabs:after,
+.nav-pills:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.nav-tabs:after,
+.nav-pills:after {
+  clear: both;
+}
+
+.nav-tabs > li,
+.nav-pills > li {
+  float: left;
+}
+
+.nav-tabs > li > a,
+.nav-pills > li > a {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 2px;
+  line-height: 14px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs > li {
+  margin-bottom: -1px;
+}
+
+.nav-tabs > li > a {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+  border-color: #eeeeee #eeeeee #dddddd;
+}
+
+.nav-stacked > li {
+  float: none;
+}
+
+.nav-stacked > li > a {
+  margin-right: 0;
+}
+
+.nav-tabs.nav-stacked {
+  border-bottom: 0;
+}
+
+.nav-tabs.nav-stacked > li > a {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+.nav-tabs.nav-stacked > li:first-child > a {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.nav-tabs.nav-stacked > li:last-child > a {
+  -webkit-border-bottom-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -moz-border-radius-bottomleft: 4px;
+}
+
+.nav-tabs.nav-stacked > li > a:hover,
+.nav-tabs.nav-stacked > li > a:focus {
+  z-index: 2;
+  border-color: #ddd;
+}
+
+#idSms{color: #eeeeee !important;}
+
+.alerta-senha {
+    margin-left: 20px;
+    background-color: #d7eaff;
+    border: 1px solid #c4d8ee;
+    border-radius: 10px;
+    padding: 15px 15px 5px;
+    width: 34%;
+}
+
+.alerta-duplo {
+    display: inline-block;
+    float: left;
+    min-height: 150px;
+}
+
+.status-criminal label {width: 50px !important; padding: 5px; font-weight: normal;font-size:13px;}
+
+.dialog-analise-criminal label{display: block; float: left !important; margin-right: 10px;}
+
+.textoSimples{
+	font-size: small;
+	font-weight: normal;
+}
+
+.dialog-panel-perguntas{width: 545px; margin: auto !important; padding: 15px; border: 1px solid #999;}}
+
+.orgaos_imagens {
+	border: none;
+	float: left;
+	margin-left: 10px;
+}
+
+.container_orgaos {
+	width: 234px;
+	text-align: left;
+	margin-left: -190px;
+}
+
+.label-msg {
+	font-size: 0.9em;
+	margin-left: -190px;
+	line-height: 29px;
+}
+
+/*
+
+
+Min. Público
+
+
+*/
+.tooltiptext {
+	width: 340px;
+	background-color: black;
+	color: #FFF !important;
+	text-align: center;
+	padding: 5px 7px;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+	margin: 0 0 0 20px;
+}
+
+.boxBusca {
+	width: 96.5%;
+	padding: 10px 15px !important;
+}
+
+.boxBusca legend {
+	font-size: 13px !important;
+}
+
+.dataTableMP {
+	margin: 5px 0 5px 0;
+	text-align: center;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.dataTableMP .titulo {
+	color: #000;
+	font-weight: bold !important;
+	white-space: pre-line;
+	word-wrap: break-word !important;
+}
+.dataTableMP .texto {
+    font-weight: normal;
+    font-size: 1.0em;
+    text-align:left;
+    white-space: pre-line;
+    word-wrap: break-word !important;
+}
+.textarea_mp {
+    width: 98%;
+    min-height: 200px;
+    padding: 8px;
+    float: left;
+    resize: none;
+    font-family: Arial;
+}
+
+.boxStatusSolicitacao {
+    width: 98%;
+    height: 81px;
+	font-size: 15px;
+    position: relative;
+    border: 1px solid #dddddd;
+    margin: 19px 0 10px 10px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.21);
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.21);
+}
+
+.boxStatusWizard {
+    width: 98%;
+	font-size: 15px;
+    position: relative;
+    border: 1px solid #dddddd;
+    margin: 19px 0 10px 10px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.boxDecricoesStatusWizard {
+    width: 130px;
+    height: 54px;
+    line-height: 18px;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-table;
+    margin: 0 8px 0 44px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    opacity: 0.7;
+    color: #8e8e8e;
+}
+
+.boxDecricoesStatusWizard h2{
+	position: absolute;
+	font-size: 50px !important;
+	margin: 20px 0 0 -35px;
+	opacity: 0.6;
+	color: #969494 !important;
+	z-index: 1;
+}
+
+.boxDecricoesStatusWizard span{
+	position: relative;
+	z-index: 2;
+}
+
+.boxLinhaWizard1{
+	top: 20px;
+	padding:2px;
+	position: relative;
+	margin-left: -21px;
+}
+
+.linhaAtivaStatusWizard{
+	opacity: 1;
+	color: #000;
+	font-weight:bold;
+	border-bottom: 2px solid #eb5539;
+}
+
+
+.boxDecricoesStatus {
+    width: 130px;
+    height: 54px;
+    line-height: 18px;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-table;
+    margin: 0 8px 0 44px;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    opacity: 0.7;
+    color: #8e8e8e;
+}
+
+
+.boxDecricoesStatus h1{
+	position: absolute;
+	font-size: 71px !important;
+	margin: 20px 0 0 -35px;
+	opacity: 0.6;
+	color: #969494 !important;
+	z-index: 1;
+}
+
+.boxDecricoesStatus span{
+	position: relative;
+	z-index: 2;
+}
+
+.boxLinha1{
+	top: 2px;
+	padding:2px;
+	position: relative;
+}
+
+.boxLinha2{
+	top: 20px;
+	position: relative;
+}
+
+.linhaAtivaStatus{
+	opacity: 1;
+	color: #000;
+	font-weight:bold;
+	border-bottom: 2px solid #eb5539;
+}
+
+.linhaAtivaStatus:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #eb5539;
+	position: absolute;
+	margin: 60px 0 0 -4px;
+}
+
+.fecharBoxStatus{
+	width: 20px;
+	border: 3px solid #ccc;
+	background: #fff;
+	position: absolute;
+	right: -11px;
+	top: -14px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.headCadastro {
+    width: 98%;
+    float: left;
+    margin: 10px 0 10px 10px;
+    border: 1px solid #ccc;
+    padding: 6px 0;
+    background: #efefef;
+    color: #9a9a9a;
+    display: block;
+}
+
+.headCadastro span{
+	width: 50%;
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.rec_paternidade .alerta-senha {
+    width: 29.5%;
+}
+
+.alerta-senha {
+    margin-left: 20px;
+    background-color: #d7eaff;
+    border: 1px solid #c4d8ee;
+    border-radius: 10px;
+    padding: 15px 15px 5px;
+    width: 34%;
+}
+
+.alerta-duplo {
+    display: inline-block;
+    float: left;
+    min-height: 150px;
+}
+
+.box-mp-dados-do-car {
+	background-color:#FAFAFA;
+	float: left;
+	width: 99.5%;
+	margin-bottom: 2px;
+	border: 1px solid #CCC;
+}
+
+.text-size{font-size: 14px;}
+.redBold {
+    color: #C00;
+    font-weight: bold;
+}
+
+p.titulo_md {
+    font-size: 1.8em !important;
+    margin-bottom: 20px !important;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid #000000;
+    border-right: 4px solid transparent;
+    border-bottom: 0 dotted;
+    border-left: 4px solid transparent;
+}
+
+.remodal-msg {
+    font-size: 14px !important;
+    margin-top: 6px;
+    padding-bottom: 10px;
+    line-height: 24px;
+    width: 550px;
+    margin: auto;
+}
+
+.output-label-font{font-size:11px; font-weight: normal;float:left; margin-right:1px; text-transform: lowercase;}
+.row-table {font-size: 13px; font-weight: normal;}
+
+.selectoneradio-segunda-via-digital{
+	font-size:11px; font-weight: normal; width: 600px;
+}
+
+.selectoneradio-segunda-via-digital label {
+	width: 220px !important;
+}
+
+.btn_checked {
+	background: url(../imagens/correct.png) no-repeat center !important;
+	text-decoration: none;
+	width: 13px;
+	height: 26px;
+	cursor: pointer;
+	border: none !important;
+	text-align: left;
+	vertical-align: text-bottom;
+	margin: 0px;
+	position: absolute;
+}
+
+.checkbox-align label {
+	margin-left: 4px !important;
+}
+
+#content_agendamento {
+	float: left;
+	margin-bottom: 20px;
+	width: 976px;
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+#content_agendamento h4 {
+	font-size: 1.5em;
+	border-bottom: 1px solid #a8a8a8;
+	padding: 5px;
+	margin-bottom: 15px;
+	color: #666666;
+	font-weight: bold;
+}
+
+.legendaBuscaCep {
+	color: #666666;
+	font-size: 1.1em;
+	font-weight: normal;
+	padding: 0 5px;
+	margin-bottom: 8px;
+}
+
+.regular{color: #363; font-weight: bold; text-transform: uppercase;}
+.panel-shadow{
+ -webkit-box-shadow: 1px 3px 5px 0px rgba(50, 50, 50, 0.68);
+ -moz-box-shadow:    1px 3px 5px 0px rgba(50, 50, 50, 0.68);
+ box-shadow:         1px 3px 5px 0px rgba(50, 50, 50, 0.68);
+}
+
+.nomeMunicipio {
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #999 !important;
+	text-transform: uppercase;
+	text-align: left;
+	font-weight: normal;
+	height: 18px;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+	<h:panelGroup id="dadosTrabalho">
+		<p:row>
+			<p:column colspan="4">
+				<div class="cadastro_borda_interna_top">
+					<div class="categoria">
+						<h5 class="cadastro">
+							<h:outputFormat value="Dados adicionais do Trabalho:" />
+						</h5>
+					</div>
+					<p:panelGrid cellpadding="0" cellspacing="0" style="font-size: 10px;" styleClass="noBorders">
+						<p:row>
+							<p:column style="text-align: right; width:100px">
+								<h:outputFormat value="Cep: " />
+							</p:column>
+							<p:column >
+								<p:inputMask id="cepTrabalho" value="#{cidadao.cepTrabalho1}" maxlength="9" size="10" mask="99999-999" styleClass="borda" label="Cep Trabalho" >
+									<p:ajax listener="#{pesquisaEnderecoMB.doBuscarEnderecoPorCep(cidadao, 'Trabalho')}" update="messages, logradouroTrabalho, numeroTrabalho, complementoTrabalho, bairroTrabalho, codMunicipioTrabalho,nomeMunicipioTrabalho, nomeMunicipioHideTrabalho" />
+								</p:inputMask>								
+								<p:commandButton rendered="#{mb.habilitaBuscaCepPorFonetica}" alt="Pesquisa Cep por endereço." onclick="abrirDialogCep('Trabalho')" type="button"
+								style="v-align:middle" styleClass="icon_book" value="" title="Pesquisa Cep por endereço." tabindex="-1" />
+							</p:column>
+							<p:column style="text-align: right">
+								<p:spacer width="100" height="10" />
+								<h:outputFormat value="Logradouro: " />
+							</p:column>
+							<p:column>
+								<p:inputText id="logradouroTrabalho" value="#{cidadao.endTrabalho}" label="Logradouro Trabalho" maxlength="22" size="45" styleClass="borda"/>
+								<BR/>
+								<small style="color:red">(Tamanho máximo: 22 caracteres)</small>
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column style="text-align: right">
+								<h:outputFormat value="Número: " />
+							</p:column>
+							<p:column>
+								<p:inputMask id="numeroTrabalho" value="#{cidadao.numTrabalho}" label="Número Trabalho:" maxlength="5" size="10" styleClass="borda" mask="9?9999" />
+							</p:column>
+							<p:column style="text-align: right">
+								<p:spacer width="100" height="10" />
+								<h:outputFormat value="Complemento: " />
+							</p:column>
+							<p:column>
+								<p:spacer width="1" height="10" />
+								<p:inputText id="complementoTrabalho" value="#{cidadao.complTrabalho}" label="Complemento:" maxlength="8" size="45" styleClass="borda" />
+								<BR/>
+								<small style="color:red">(Tamanho máximo: 8 caracteres)</small>
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column style="text-align: right">
+								<h:outputFormat value="Bairro: " />
+							</p:column>
+							<p:column>
+								<p:spacer width="1" height="10" />
+								<p:inputText id="bairroTrabalho" value="#{cidadao.bairroTrabalho}" label="Bairro" maxlength="14" size="30" styleClass="borda"/>
+								<BR/>
+								<small style="color:red">(Tamanho máximo: 14 caracteres)</small>
+							</p:column>
+							<p:column style="text-align: right">
+								<p:spacer width="100" height="10" />
+								<h:outputFormat value="Município: " />
+								<p:spacer width="1" height="10" />
+							</p:column>
+							<p:column>
+								<p:spacer width="1" height="10" />
+								<p:inputMask id="codMunicipioTrabalho" value="#{cidadao.municipioTrabalho.codigoFormatado}" label="Município" size="5" mask="99999?-9" styleClass="borda">
+									<p:ajax event="change" update="codMunicipioTrabalho,nomeMunicipioTrabalho,nomeMunicipioHideTrabalho" listener="#{mb.doBuscarMunicipioPorCodigo(cidadao.municipioTrabalho)}" />
+								</p:inputMask>
+								<h:inputHidden id="nomeMunicipioHideTrabalho" value="#{cidadao.municipioTrabalho.nome}" />
+								<p:spacer width="5" height="10" />
+								<p:outputLabel id="nomeMunicipioTrabalho" value="#{cidadao.municipioTrabalho.nome}" size="44" styleClass="nomeMunicipio" />
+								<p:commandButton alt="Selecione este botão caso não saiba o código do município" onclick="abrirDialogMunicipio('Trabalho');" type="button" style="v-align:middle" styleClass="icon_book" value="" title="Pesquisar Município" tabindex="-1" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+					<p />
+				</div>
+			</p:column>
+		</p:row>
+	</h:panelGroup>
+</ui:composition>

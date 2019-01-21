@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:param name="mb" value="#{carteiraIdentidadeMB}" />
+<ui:param name="cidadao" value="#{mb.cidadaoSelecionado}" />
+
+<div id="global">
+	<h:form id="formularioIIRGDEdicao"
+		onsubmit="document.getElementById('formularioIIRGDEdicao:salvarCadastroNovo').focus();">
+		<h:panelGroup id="pformCadastroRg">
+			<div id="content_full">
+
+				<fieldset id="fieldsetInterno">
+					<legend class="legendaFormulario">
+						<h:outputFormat value="Cadastrar RG" />
+					</legend>
+					<br />
+					<p:messages id="messages" closable="true" />
+					<ui:include src="/pages/templates/iirgd/adicionaisCidadao.xhtml" />
+					<ui:include src="/pages/templates/iirgd/adicionaisTrabalho.xhtml" />
+
+					<ui:insert name="action_button">
+						<p class="botao">
+							<p:commandButton id="salvarCadastroNovo" value=""
+								action="#{mb.checaCpfParaSalvarDados}" ajax="false"
+								styleClass="btn_salvar_cadastro" update="pformCadastroRg"
+								onclick="showAjaxStatus(true);">
+							</p:commandButton>
+						</p>
+					</ui:insert>
+				</fieldset>
+			</div>
+		</h:panelGroup>
+	</h:form>
+</div>
+</html>

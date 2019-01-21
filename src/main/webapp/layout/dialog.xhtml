@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"/>
+<f:view>
+
+	<!-- O CONTEXTO WEB DA APLICACAO -->
+	<ui:param name="mycontext" value="/poupa" />
+
+	<!-- O CONTEXTO ESTATICO DA APLICACAO -->
+	<ui:param name="static_context" value="/poupa/_static" />
+
+	<!-- O CONTEXTO ESTATICO DA IMAGEM -->
+	<ui:param name="image_context" value="/poupa/_static/imagens" />
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+		<link type="text/css" rel="stylesheet" href="#{static_context}/css/estilo.css" media="all" title="" charset="ISO-8859-1" />
+		<link type="text/css" rel="stylesheet" href="#{static_context}/css/prime.css" media="all" title="" charset="ISO-8859-1" />
+
+		<link type="text/css" rel="alternate stylesheet" href="#{static_context}/css/contraste.css" media="all" title="cinza" charset="ISO-8859-1" />
+
+		<script type="text/javascript" src="#{static_context}/js/app/global.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/poupatempo.js" charset="ISO-8859-1" />
+		<!-- JAVASCRIPTS GREYBOX -->
+		<script type="text/javascript">
+			var GB_ROOT_DIR = "#{static_context}/js/greybox/";
+		</script>
+		<script type="text/javascript" src="#{static_context}/js/greybox/AJS.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/greybox/AJS_fx.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/greybox/gb_scripts.js" charset="ISO-8859-1" />
+		
+		<!-- SCRIPTS ESPECIFICOS DE UMA PAGINA -->		
+		<script type="text/javascript" src="#{static_context}/js/app/#{myscript}" charset="ISO-8859-1"/>	
+	
+
+		<title>:: Poupatempo 2ª Geração ::</title>
+		<meta name="classification" content="Governo" />
+		<meta name="author" content="Prodesp" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta http-equiv="pragma" content="no-cache" /> <!-- HTTP 1.0 -->
+		<meta http-equiv="cache-control" content="no-cache" /><!-- HTTP 110    -->
+		<meta http-equiv="expires" content="0" /> 
+		<meta http-equiv="cache-control" content="no-store" /> <!-- HTTP 1.1 -->
+		<script type="text/javascript">
+			function noBack() {
+				window.history.forward();
+			}
+			noBack();
+			window.onload = noBack;
+			window.onpageshow = function(evt) {
+				if (evt.persisted){
+					noBack();
+				}
+			}
+			window.onunload = function() {
+				window.parent.parent.GB_hide();
+				window.parent.parent.showAjaxStatus(false);
+				void (0)
+			}
+		</script>
+	</h:head>
+
+	<h:body>
+	
+		<!-- Imagem transparente para impedir acesso a botões e campos -->
+		<div id="waitTransp"
+			style="visibility: hidden; position: absolute; width: 100%; height: 99%; z-index: 10; left: 0px; top: 0px;">
+			<img src="#{static_context}/imagens/nada.gif" style="cursor: wait" width='100%'
+				height='100%' border="0" />
+		</div>
+		
+		<!-- MENSAGENS -->
+
+		<p:ajaxStatus id="ajaxStatus" style="width:64px;height:64px;position:fixed;right:15px;bottom:30px">
+			<f:facet name="start">
+				<center>
+					<img src="#{static_context}/imagens/loading.gif" alt="" border="0" />
+				</center>
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+
+
+		<div id="global">
+
+			<!-- Cabeçalho -->
+			<div id="header">
+				<ui:insert name="header" />
+			</div>
+			<!-- fim Cabeçalho -->
+		
+			<!-- Content Home -->
+			<div id="content">
+				<ui:insert name="content" />
+			</div>
+			
+		</div>
+	</h:body>
+</f:view>
+</html>

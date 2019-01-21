@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<!-- O CONTEXTO WEB DA APLICACAO -->
+	<ui:param name="mycontext" value="/poupa" />
+	<!-- O CONTEXTO ESTATICO DA APLICACAO -->
+	<ui:param name="static_context" value="/poupa/_static" />
+
+	<!-- O CONTEXTO ESTATICO DA IMAGEM -->
+	<ui:param name="image_context" value="/poupa/_static/imagens" />
+
+	<ui:param name="image_context_prime" value="/_static/imagens" />
+	
+	<ui:param name="nomeTitulo" value="#{logonMB.tituloPagina}" />
+	
+	<h:head>
+		<title><ui:insert name="title">:: #{nomeTitulo} ::</ui:insert></title>
+		<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<META name="classification" content="Governo" />
+		<META name="author" content="Prodesp" />
+		<META name="description" content="" />
+		<META name="keywords" content="" />
+		<META http-equiv="pragma" content="no-cache" />
+		<!-- HTTP 1.0 -->
+		<META http-equiv="cache-control" content="no-cache" />
+		<!-- HTTP 110    -->
+		<META http-equiv="expires" content="0" />
+		<META http-equiv="cache-control" content="no-store" />
+		<!-- HTTP 1.1 -->
+
+		<link type="text/css" rel="stylesheet" href="#{static_context}/css/estilo.css" media="all" title="" charset="ISO-8859-1" />
+		<link type="text/css" rel="stylesheet" href="#{static_context}/css/prime.css" media="all" title="" charset="ISO-8859-1" />
+
+		<link type="text/css" rel="alternate stylesheet" href="#{static_context}/css/contraste.css" media="all" title="cinza" charset="ISO-8859-1" />
+
+		<script type="text/javascript" src="#{static_context}/js/app/global.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/poupatempo.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/challenge.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/comum.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/apiValidator.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/app/locale-primefaces.js" charset="ISO-8859-1" />
+
+		<!-- JAVASCRIPTS GREYBOX -->
+		<script type="text/javascript">
+			var GB_ROOT_DIR = "#{static_context}/js/greybox/";
+		</script>
+		<script type="text/javascript" src="#{static_context}/js/greybox/AJS.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/greybox/AJS_fx.js" charset="ISO-8859-1" />
+		<script type="text/javascript" src="#{static_context}/js/greybox/gb_scripts.js" charset="ISO-8859-1" />
+		<link type="text/css" rel="stylesheet" href="#{static_context}/js/greybox/gb_styles.css" media="all" title="" charset="ISO-8859-1" />
+		<!-- FIM JAVASCRIPTS GREYBOX -->
+
+		<!-- SCRIPTS ESPECIFICOS DE UMA PAGINA -->
+		<h:panelGroup rendered="#{myscript != null}">
+			<script type="text/javascript" src="#{static_context}/js/app/#{myscript}" charset="ISO-8859-1" />
+		</h:panelGroup>
+		<script type="text/javascript">
+			window.onload = function(e) {
+				var cookie = readCookie("style");
+				var title = cookie ? cookie : getPreferredStyleSheet();
+				setActiveStyleSheet(title);
+			}
+
+			window.onunload = function(e) {
+				var title = getActiveStyleSheet();
+				createCookie("style", title, 1);
+			}
+
+			function noBack() {
+				window.history.forward();
+			}
+			noBack();
+
+			window.onpageshow = function(evt) {
+				if (evt.persisted) {
+					noBack();
+				}
+			}
+			
+		</script>
+	</h:head>
+
+	<h:body>
+
+		<!-- Imagem transparente para impedir acesso a botões e campos -->
+		<div id="waitTransp" style="visibility: hidden; position: absolute; width: 100%; height: 99%; z-index: 999; left: 0px; top: 0px;">
+			<img src="#{static_context}/imagens/nada.gif" style="cursor: wait" width='100%' height='100%' border="0" />
+		</div>
+
+		<!-- MENSAGENS -->
+
+		<p:ajaxStatus id="ajaxStatus" style="width:64px;height:64px;position:fixed;right:15px;bottom:30px">
+			<f:facet name="start">
+				<center>
+					<img src="#{static_context}/imagens/loading.gif" alt="" border="0" />
+				</center>
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+
+
+		<div id="global">
+
+			<!-- Cabeçalho -->
+			<div id="header">
+				<ui:insert name="logo_orgao">
+					<h1 id="logo">
+						<h:form>
+							<p:commandLink id="paginaInicial" action="#{logonMB.doMostrarPaginaPrincipal}" accesskey="1" ajax="false" process="@this" immediate="true" onclick="showAjaxStatus(true);"> Poupatempo - 2ª Geração </p:commandLink>
+						</h:form>
+					</h1>
+				</ui:insert>
+
+				<ul id="toolbox">
+					<li class="tamanho"><a href="#" class="decrease" style="padding-left: 0"> <img src="#{image_context}/fontsize_decrease.gif" align="bottom" alt="Diminuir tamanho do texto" title="Diminuir tamanho do texto" />
+					</a> <a href="#" class="increase" style="padding-left: 0"> <img src="#{image_context}/fontsize_increase.gif" align="bottom" alt="Aumentar tamanho do texto" title="Aumentar tamanho do texto" />
+					</a> <span> Tamanho do Texto</span></li>
+					<!-- Inicio Botao Contraste -->
+					<li class="last"><a href="#" style="padding-left: 0" rel="cor"> <img src="#{image_context}/padrao.gif" align="bottom" alt="Normal" title="Normal" onclick="setActiveStyleSheet('cor'); return false;" style="cursor: pointer" />
+					</a> <a href="#" style="padding-left: 0" rel="cinza"> <img src="#{image_context}/contraste.gif" align="bottom" alt="Contraste" title="Contraste" onclick="setActiveStyleSheet('cinza'); return false;" style="cursor: pointer" />
+					</a><span> Contraste</span></li>
+
+					<!-- Fim Botao Contraste -->
+				</ul>
+
+				<h:panelGroup rendered="#{logonMB.logado}">
+					<h:form id="dadosAutenticacao">
+						<ul id="user">
+							<li>Operador: <h:outputText value=" #{logonMB.usuario.codigo}" style="height: 26px;text-align: center;" />
+							<h:panelGroup rendered="#{not empty logonMB.usuario.userDetran.codigo and logonMB.usuario.codigo != logonMB.usuario.userDetran.codigo}" >
+							
+								<li><h:outputText value="#{logonMB.usuario.userDetran.codigo}" style="height: 26px;text-align: center;"/></li>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{not empty logonMB.usuario.userIIRGD.codigo and logonMB.usuario.codigo != logonMB.usuario.userIIRGD.codigo}" >
+						
+								<li><h:outputText value="#{logonMB.usuario.userIIRGD.codigo}" style="height: 26px;text-align: center;"/></li>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{not empty logonMB.usuario.userMinisterioPublico.codigo and logonMB.usuario.codigo != logonMB.usuario.userIIRGD.codigo and logonMB.usuario.userDetran.codigo}" >
+						
+								<li><h:outputText value="#{logonMB.usuario.userMinisterioPublico.codigo}" style="height: 26px;text-align: center;"/></li>
+							</h:panelGroup>
+							<!--<li><a href="#">Alterar meus dados</a></li>  -->
+							</li>
+							<li class="sair"><p:commandLink action="#{logonMB.doLogoff}" ajax="false">
+									<h:outputLabel value="Sair" styleClass="label_sair" />
+								</p:commandLink></li>
+						</ul>
+					</h:form>
+					<!-- Navegação Superior -->
+					<div id="nav_main">
+						<h:form id="menuServicos">
+							<p:menubar style="height: 30px; width:auto;" model="#{menuIirgdMB.model}" autoDisplay="false" />
+						</h:form>
+					</div>
+					<!-- fim Navegação Superior -->
+				</h:panelGroup>
+
+				<h:panelGroup rendered="#{! logonMB.logado}">
+					<!-- Navegação Superior -->
+					<div id="nav_main">
+						<p class="boas_vindas">Bem-vindo ao sistema integrado<ui:insert name="nome"> Poupatempo</ui:insert>!</p>
+						<p class="data">
+							<h:outputText value="#{dataAtual}">
+								<f:convertDateTime pattern="EEEEEE',' dd/MM/yyyy" type="date" />
+							</h:outputText>
+						</p>
+					</div>
+					<!-- fim Navegação Superior -->
+				</h:panelGroup>
+			</div>
+			<!-- fim Cabeçalho -->
+
+			<!-- Migalhas e Data -->
+			<div id="pre_content">
+				<ui:insert name="pre_content" />
+			</div>
+
+			<!-- Content Home -->
+			<div id="content">
+				<ui:insert name="content" />
+			</div>
+			<!-- Fim do content -->
+
+			<!-- Sidebar -->
+			<div id="sidebar">
+				<ui:insert name="sidebar" />
+			</div>
+			<!-- Fim Sidebar -->
+
+			<!-- Rodapé -->
+			<div id="footer">
+				<p>
+					®Balcão Único - 2ª Geração -
+					<p:outputLabel value="Versão:" /><p:spacer width="5px" />
+					<p:outputLabel value="#{m['sistema.versao']}" />
+				</p>
+			</div>
+		</div>
+		<!-- iFrame CallBack -->
+		<iframe name="iframe_cb" id="iframe_cb" frameborder='0' width='0' height='0'></iframe>
+	</h:body>
+</f:view>
+</html>

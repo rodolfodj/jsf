@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+	<p:row>
+		<p:column colspan="4">
+			<div class="cadastro_borda_interna_top">
+				<div class="categoria">
+					<h5 class="cadastro">
+						<h:outputFormat value="Dados adicionais do Cidadão:" />
+					</h5>
+				</div>
+				<p:panelGrid cellpadding="0" cellspacing="0" style="font-size: 10px;" styleClass="noBorders">
+					<p:row>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Estado Cívil: " />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu id="estadoCivil" value="#{cidadao.estadoCivil}" required="true" label="Estado Cívil" style="float:left;width:130px;">
+								<f:selectItems value="#{comboLoaderMB.listEstadoCivil}" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Cutis: " />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu id="cutis" value="#{cidadao.cutis}" required="true" label="Cutis">
+								<f:selectItems value="#{comboLoaderMB.listCutis}" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Cabelos: " />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu id="cprdcabelos" value="#{cidadao.cabelos}" required="true" label="Cabelos" style="float:left;width:130px;">
+								<f:selectItems value="#{comboLoaderMB.listCorCabelo}" />
+							</p:selectOneMenu>
+						</p:column>
+
+					</p:row>
+
+					<p:row>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Olhos: " />
+							<p:spacer width="1" height="10" />
+						</p:column>
+						<p:column colspan="2">
+							<p:selectOneMenu id="corOlhos" value="#{cidadao.olhos}" required="true" label="Olhos" style="float:left;width:130px;">
+								<f:selectItems value="#{comboLoaderMB.listCorOlhos}" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column style="text-align: right" colspan="2">
+							<p:spacer width="100" height="10" />
+							<h:outputFormat value="Altura: " />
+						</p:column>
+						<p:column>
+							<p:inputMask id="altura" value="#{cidadao.altura}" label="Altura" size="5" maxlength="4" required="true" styleClass="borda" mask="9,99">
+								<f:validateLength minimum="4" maximum="4" />
+							</p:inputMask>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="text-align: right;white-space:nowrap;">
+							<h:outputFormat value="Grau de Instrução: " />
+						</p:column>
+						<p:column colspan="2">
+							<p:selectOneMenu id="grau" value="#{cidadao.grauInstrucao}" label="Grau Instrução" required="true" style="float:left;width:130px;">
+								<f:selectItems value="#{comboLoaderMB.listGrauInstrucao}" />
+								<p:ajax event="change" update="assinatura" listener="#{carteiraIdentidadeMB.doDefaultAssinatura}" resetValues="true" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column style="text-align: right" colspan="2">
+							<p:spacer width="100" height="10" />
+							<h:outputFormat value="Profissão: " />
+						</p:column>
+						<p:column>
+							<p:inputText id="profissao" value="#{cidadao.profissao}" label="Profissão" maxlength="12" size="45"
+								onkeypress='return alphabeticAcento(event);' styleClass="borda" style="text-transform:uppercase;">
+							</p:inputText>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Cep: " />
+						</p:column>
+						<p:column colspan="2">
+							<p:inputMask id="cepResidencia" value="#{cidadao.cepResidencia}" maxlength="9" size="10" mask="99999-999" styleClass="borda"
+								label="Cep Residencia" required="#{cidadao.entrega != 'P'}" >
+								<p:ajax listener="#{pesquisaEnderecoMB.doBuscarEnderecoPorCep(cidadao, 'Residencia')}" update="messages, logradouroResidencia, numeroResidencia, complementoResidencia, bairroResidencia, codMunicipioResidencia,nomeMunicipioResidencia, nomeMunicipioHideResidencia" />
+							</p:inputMask>
+							<p:commandButton rendered="#{mb.habilitaBuscaCepPorFonetica}" alt="Pesquisa Cep por endereço." onclick="abrirDialogCep('Residencia')"
+									style="v-align:middle" styleClass="icon_book" value="" title="Pesquisa Cep por endereço." tabindex="-1" />
+												
+						</p:column>
+						<p:column style="text-align: right" colspan="2">
+							<p:spacer width="100" height="10" />
+							<h:outputFormat value="Logradouro: " />
+						</p:column>
+						<p:column>
+							<p:inputText id="logradouroResidencia" value="#{cidadao.endResidencia}" label="Logradouro" maxlength="22" size="45" required="true" styleClass="borda">
+								<f:validateLength minimum="3"/>
+							</p:inputText>
+							<BR/>
+							<small style="color:red">(Tamanho máximo: 22 caracteres)</small>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Número: " />
+						</p:column>
+						<p:column colspan="2">
+							<p:inputMask id="numeroResidencia" value="#{cidadao.numResidencia}" label="Número Residencial" maxlength="5" size="10" required="true"
+								styleClass="borda" mask="9?9999" />
+						</p:column>
+						<p:column style="text-align: right" colspan="2">
+							<p:spacer width="100" height="10" />
+							<h:outputFormat value="Complemento: " />
+						</p:column>
+						<p:column>
+							<p:spacer width="1" height="10" />
+							<p:inputText id="complementoResidencia" value="#{cidadao.complResidencia}" label="Complemento" maxlength="8" size="45" styleClass="borda"/>
+							<BR/>
+							<small style="color:red">(Tamanho máximo: 8 caracteres)</small>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column style="text-align: right">
+							<h:outputFormat value="Bairro: " />
+						</p:column>
+						<p:column colspan="2">
+							<p:spacer width="1" height="10" />
+							<p:inputText id="bairroResidencia" value="#{cidadao.bairroResidencia}" label="Bairro" maxlength="14" size="30" styleClass="borda"/>
+							<BR/>
+							<small style="color:red">(Tamanho máximo: 14 caracteres)</small>
+						</p:column>
+						<p:column style="text-align: right" colspan="2">
+							<p:spacer width="100" height="10" />
+							<h:outputFormat value="Município: " />
+							<p:spacer width="1" height="10" />
+						</p:column>
+						<p:column>
+							<p:spacer width="1" height="10" />
+							<p:inputMask id="codMunicipioResidencia" value="#{cidadao.municipioResidencia.codigoFormatado}" label="Município" size="5" mask="99999?-9"
+								styleClass="borda">
+								<p:ajax event="change" update="codMunicipioResidencia,nomeMunicipioResidencia,nomeMunicipioHideResidencia"
+									listener="#{mb.doBuscarMunicipioPorCodigo(cidadao.municipioResidencia)}" />
+							</p:inputMask>
+							<h:inputHidden id="nomeMunicipioHideResidencia" value="#{cidadao.municipioResidencia.nome}" />
+							<p:spacer width="5" height="10" />
+							<p:outputLabel id="nomeMunicipioResidencia" value="#{cidadao.municipioResidencia.nome}" size="200" styleClass="nomeMunicipio" />
+							<p:commandButton alt="Selecione este botão caso não saiba o código do município" onclick="abrirDialogMunicipio('Residencia');" type="button"
+								style="v-align:middle" styleClass="icon_book" value="" title="Pesquisar Município" tabindex="-1" />
+						</p:column>
+					</p:row>
+					
+				</p:panelGrid>
+				<p />
+			</div>
+		</p:column>
+	</p:row>	
+</ui:composition>

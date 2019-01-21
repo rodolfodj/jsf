@@ -1,0 +1,93 @@
+/*********************************************
+Sistema: Poupatempo 2a Geracao
+Autor: Prodesp
+Versão:  2012.08.01
+*********************************************/
+
+/* IMPORTA ESTILO DO ARQUIVO estilo.css */
+@import url(estilo.css);
+
+body{background-color: #000 !important;}
+
+#global {background-color:#000; color: #FFF;}
+
+/* Texto Branco */
+#toolbox span, #nav_main a, #nav_main p, #content p.vermais a, #content p.vermais a:hover, 
+a, a:hover, a:visited, a:link, #footer ul li a, #content p, #user li a, #user li a:hover, #sidebar .menu ul li a, .nao_finalizado, p.vermais a,
+#content h1, #content dt, #login h1, #login li a, #banner_helpdesk p.central, #banner_helpdesk p.fone,
+a:link.voltar, a:visited.voltar, a:active.voltar, ul#icones li a, ul#breadcrumbs li a, ul#breadcrumbs, #content h2 a, #content small, #content .redBold,
+#content ul.servicos li a, #content_full legend, #content_full #habilitacao h2, #content_full #alerta h5, span.redBold, #content_full fieldset.fieldInterno legend, 
+#login p.alerta, .loginInterno .alerta, .loginInterno .senha, .menu h1, .redBold, label, td, .aviso_servicos, span
+{
+	color: #FFF !important;
+}
+/* Texto Preto */
+.ui-selectonemenu-label {
+	color: #000 !important;
+}
+
+/* ocultando imagens */
+#nav_main, #content p.vermais a, #content p.vermais a:hover, #banner_helpdesk, #aviso, input.btn_iirgd, input.btn_detran, #sidebar .menu{
+	background-image: none;
+}
+
+/* Substituindo Imagens */
+#header			{background:url(../imagens/bg_headerInvertido.jpg) no-repeat;}
+#comunicados h1 {background:url(../imagens/boneco_comunicadosInvertido.gif) right 50px no-repeat;} 
+#dicas 			{background:#EEE url(../imagens/bg_dicasInvertido.jpg) no-repeat;}
+#sidebar .menu ul li	{background:url(../imagens/bullet_branco.gif) left 3px no-repeat;}
+
+/* Logo */
+#logo a {
+	display: block;
+	float: left;
+	width: 450px;
+	height: 56px;
+	background: url(../imagens/logo_invertido.png) no-repeat left top;
+	text-indent: -9000px;
+	margin:9px 0 7px 90px;
+}
+
+/* Logo Detran */
+#logo a.detran {
+	background: url(../imagens/logo_detran_invertido.png) no-repeat left top;
+}
+
+/* Logo IIRGD */
+#logo a.iirgd {
+	background: url(../imagens/logo_policiaCivil_invertido.png) no-repeat left top;
+}
+
+#aviso span.bg_icone{	
+	background:url(../imagens/icon_aviso_invertido.gif) left top no-repeat;
+}
+
+/* Fundo Preto */
+.ui-menu, .ui-menu .ui-menu-child, table, td, tr, div, #alerta, #footer, #footer p, #login, #comunicados ul, #dicas, input.btn_iirgd:hover, input.btn_detran:hover, input.btn_iirgd, input.btn_detran, 
+#nav_main a.sub, #nav_main a.sub:hover, #habilitacao, span.bg, input.bg, span.barra_iirgd, span.barra_detran, #termos_pesquisados, #dados, 
+#nav_main .sf-menu li:hover, #nav_main .sf-menu li.sfHover, #nav_main .sf-menu a:focus, #nav_main .sf-menu a:hover, #nav_main .sf-menu a:active, .ui-widget-content, .tableProntuarioLista, .nav_main, #nav,
+.nav, .nav > li > a:hover, .nav > li > a:focus{
+	background-color: #000 !important;
+}
+
+.ui-menu, .ui-menu .ui-menu-child{
+	background: #000 !important
+}
+
+/* Borda branca */
+#banner_helpdesk, input.btn_iirgd, input.btn_detran, #alerta{	
+	border:1px solid #FFF !important;;;
+}
+
+.waitLoad {
+	cursor: default;
+	background-repeat: no-repeat;
+	background-image: url("../imagens/waitLoadInvertido.gif");
+	width: 16px;
+	height: 16px;
+}
+
+/* Fundo Branco */
+.ui-selectonemenu-item{
+	background-color: #FFF;
+}
